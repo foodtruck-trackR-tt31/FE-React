@@ -11,21 +11,26 @@ function Signup() {
     const [newRole, setNewRole] = useState('')
 
     const updateName = (e) => {
-        setNewUsername([e.target.id].e.target.value)
+        setNewUsername(e.target.value)
     }
 
     const updatePassword = (e) => {
-        setNewPassword([e.target.id].e.target.value)
+        setNewPassword(e.target.value)
     }
 
     const updateRole = (e) => {
-        setNewRole([e.target.id].e.target.value)
+        setNewRole(e.target.value)
     }
 
     const handleSubmit = (e) => {
+        const creds = {
+            username: newUsername,
+            password: newPassword,
+            role: newRole,
+        };
+
         e.preventDefault();
-        console.log(e);
-        axios.post('https://bw-foodtruck-tracker.herokuapp.com/api/auth/register', e)
+        axios.post('https://bw-foodtruck-tracker.herokuapp.com/api/auth/register', creds)
         .then(res => {
                 console.log(res)
             })
@@ -33,6 +38,7 @@ function Signup() {
             .catch(err => {
                 console.log(err, "oops teehee")
             })
+        //Construct a new user 
     }
 
     return (

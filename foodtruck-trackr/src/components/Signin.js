@@ -11,18 +11,18 @@ function Signin()  {
     const [password, setPassword] = useState('')
 
     const updateName = (e) => {
-        setUsername([e.target.id].value)
+        setUsername(e.target.value)
 
     }
 
     const updatePassword = (e) => {
-        setPassword([e.target.id].value)
+        setPassword(e.target.value)
     }
 
 
     const handleSubmit = (e) => {
+        const creds = 
         e.preventDefault();
-        console.log(e);
         axios.post ('https://bw-foodtruck-tracker.herokuapp.com/api/auth/login', e)
             .then(res => {
                 console.log(res)
