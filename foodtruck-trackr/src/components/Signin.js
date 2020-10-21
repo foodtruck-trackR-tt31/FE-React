@@ -21,17 +21,23 @@ function Signin()  {
 
 
     const handleSubmit = (e) => {
-        const creds = 
+        const creds = {
+            username: username,
+            password: password,
+        }
         e.preventDefault();
-        axios.post ('https://bw-foodtruck-tracker.herokuapp.com/api/auth/login', e)
+        axios.post ('https://bw-foodtruck-tracker.herokuapp.com/api/auth/login', creds)
             .then(res => {
-                console.log(res)
-                localStorage.setItem('token', res.data.token)
+                console.log(res.data);
+                localStorage.setItem('token', res.data.token);
+                setUsername('');
+                setPassword('');
             
             })
             .catch (err => {
                 console.log(err)
             })
+
     }
 
     return (
