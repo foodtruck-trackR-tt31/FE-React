@@ -42,7 +42,7 @@ function SignUp()  {
           }}
             axios.get('https://bw-foodtruck-tracker.herokuapp.com/api/users', tokenHeader)
             .then(res => {
-                console.log(res.data);
+                console.log(res.data)
                 const user = res.data.filter(item => {
                     return item.username === formData.username
                 })
